@@ -1,7 +1,7 @@
 Symofony Minimal Security Bundles Setup
 ======================================
 
-This is minimal Symfony2.3 setup with `FOSUserBundle`, `SonataAdminBundle`, `SonataUserBundle` and `HWIOAuthBundle` configured.
+This is minimal Symfony2.3 setup with `FOSUserBundle`, `SonataAdminBundle`, `SonataUserBundle` and `HWIOAuthBundle` configured. This setup combines codes from [this](http://m2mdas.github.io/blog/2013/11/18/integrate-fosuserbundle-and-sonatauserbundle-easily/) post and [this](http://m2mdas.github.io/blog/2013/11/21/integrate-hwioauthbundle-with-fosuserbundle/) post.
 
 1) Setup
 ----------------------------------

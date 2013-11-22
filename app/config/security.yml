@@ -1,0 +1,88 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        admin:
+            switch_user:        true
+            #context:            user
+            pattern:            /admin(.*)
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   null
+                use_referer:    true
+            anonymous:    true
+            logout:
+                path:           /admin/logout
+                target:         /admin/login
+
+        secure_area:
+            pattern: ^/secure_area
+
+            oauth:
+                failure_path: /secure_area/connect
+                login_path: /secure_area/connect
+                check_path: /secure_area/connect
+                provider: fos_userbundle
+                resource_owners:
+                    github:           "/secure_area/login/check-github"
+                    #twitter:          "/secure_area/login/check-twitter"
+                    #facebook:          "/secure_area/login/check-facebook"
+                    #google:           "/secure_area/login/check-google"
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
+
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                check_path: /secure_area/login_check
+                login_path: /secure_area/login
+                default_target_path:            /secure_area/hello/name #default location to redirect after successful login
+
+            anonymous:    true
+            logout:
+                path:           /secure_area/logout
+                target:         /secure_area/connect #where to go after logout
+
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/demo/secured/login$
+            security: false
+
+        secured_area:
+            pattern:    ^/demo/secured/
+            form_login:
+                check_path: _security_check
+                login_path: _demo_login
+            logout:
+                path:   _demo_logout
+                target: _demo
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+        - { path: ^/secure_area/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area, roles: ROLE_USER }
+        - { path: ^/admin/, roles: ROLE_ADMIN }

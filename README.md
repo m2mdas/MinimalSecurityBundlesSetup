@@ -8,7 +8,7 @@ This is minimal Symfony2.3 setup with `FOSUserBundle`, `SonataAdminBundle`, `Son
 
 Clone the repository and switch to `fos_login_integrate` repo,
 
-    git checkoout fos_login_integrate
+    git checkout fos_login_integrate
 
 
 Issue composer install command,

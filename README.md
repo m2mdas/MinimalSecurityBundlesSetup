@@ -6,7 +6,12 @@ This is minimal Symfony2.3 setup with `FOSUserBundle`, `SonataAdminBundle`, `Son
 1) Setup
 ----------------------------------
 
-Clone the repository and issue composer install command,
+Clone the repository and switch to `fos_login_integrate` repo,
+
+    git checkoout fos_login_integrate
+
+
+Issue composer install command,
 
     php composer.phar install --prefer-dist
 

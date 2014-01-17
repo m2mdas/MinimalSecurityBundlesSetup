@@ -1,0 +1,7 @@
+parameters:
+#    your_vendor_user.example.class: YourVendor\UserBundle\Example
+
+services:
+#    your_vendor_user.example:
+#        class: %your_vendor_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

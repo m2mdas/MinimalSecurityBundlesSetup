@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
 
+            new YourVendor\UserBundle\YourVendorUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

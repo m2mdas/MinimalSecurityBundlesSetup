@@ -32,7 +32,7 @@ security:
 
             oauth:
                 failure_path: /secure_area/connect
-                login_path: /secure_area/connect
+                login_path: /secure_area/login
                 check_path: /secure_area/connect
                 provider: fos_userbundle
                 resource_owners:

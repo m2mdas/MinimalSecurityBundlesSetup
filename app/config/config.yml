@@ -120,6 +120,7 @@ hwi_oauth:
             #type:                facebook
             #client_id:           <client_id>
             #client_secret:       <client_secret>
+            #scope:               "public_profile,email"
             #options:
                 #display: popup
         #google:

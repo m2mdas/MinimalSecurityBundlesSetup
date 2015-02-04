@@ -136,5 +136,5 @@ hwi_oauth:
         properties:
             github: githubID
             #twitter: twitterID
-            #facebook: faecbookID
+            #facebook: facebookID
             #google: googleID
